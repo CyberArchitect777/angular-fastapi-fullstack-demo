@@ -1,0 +1,19 @@
+#full-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+}
+
+h2, p {
+    text-align: center;
+    margin: 20px;
+}
+
+form {
+    width: 320px;
+    margin: 10px auto;
+}
+
+label {
+    margin: 20px 0;
+}
