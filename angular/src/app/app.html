@@ -2,8 +2,11 @@
     <h2>Welcome to the Data File Transformer</h2>
     <p>This tool allows the transformation of various data formats into others. Supported file types are XLSX, CSV and Parquet</p>
     <form>
-        <label for="inputfile">Please select a file to transform:</label>
-        <input type="file" id="inputfile" name="inputfile">
+        <label id="inputfile-wrapper">
+            <span id="inputfile-button">Select File</span>
+            <input type="file" id="inputfile-real">
+        </label>
+        <span id="inputfile-text">No file selected</span>
         <label>Please select the output file format:</label>
         <select id="outputformat" name="outputformat">
             <option value="xlsx">Excel</option>
