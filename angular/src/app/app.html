@@ -7,11 +7,14 @@
             <input type="file" id="inputfile-real">
         </label>
         <span id="inputfile-text">No file selected</span>
-        <label>Please select the output file format:</label>
-        <select id="outputformat" name="outputformat">
-            <option value="xlsx">Excel</option>
-            <option value="csv">CSV</option>
-            <option value="parquet">Parquet</option>
-        </select>
+        <div id="format-section">
+            <label>Please select the output file format:</label>
+            <select id="outputformat" name="outputformat">
+                <option value="xlsx">Excel</option>
+                <option value="csv">CSV</option>
+                <option value="parquet">Parquet</option>
+            </select>
+        </div>
+        <button type="submit" id="submit-button">Transform File</button>
     </form>
 </div>
