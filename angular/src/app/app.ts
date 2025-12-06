@@ -1,12 +1,29 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { UploadService } from './app.upload.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('angular');
+  file!: File;
+  format = "csv";
+
+  constructor(private upload: UploadService) {}
+
+  onSubmit(e: Event) {
+    e.preventDefault();
+    this.upload.convert(this.file, this.format).subscribe(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `converted.${this.format}`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    });
+  }
 }
