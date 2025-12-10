@@ -4,7 +4,7 @@
     <form id="file-process" (submit)="onSubmit($event)">
         <label id="inputfile-wrapper">
             <span id="inputfile-button">Select File</span>
-            <input type="file" id="inputfile-real">
+            <input type="file" id="inputfile-real" (change)="onChange($event)">
         </label>
         <span id="inputfile-text">No file selected</span>
         <div id="format-section">
