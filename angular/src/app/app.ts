@@ -30,11 +30,13 @@ export class App {
   onChange(event: Event) {
     const input = event.target as HTMLInputElement;
     const fileDisplay = document.getElementById('inputfile-text');
+    let submitButton = document.getElementById('submit-button') as HTMLButtonElement;
     if (input.files && input.files.length > 0) {
+      submitButton.disabled = false;
+      submitButton.style.backgroundColor = "red";
       this.file = input.files[0];
       if (fileDisplay) {
         fileDisplay.textContent = "File selected: " + this.file.name;
-        // Extract file extension
         const fileExtension = this.file.name.split('.').pop()?.toLowerCase();
         switch (fileExtension) {
           case 'csv':
@@ -53,6 +55,8 @@ export class App {
     }
     else {
       if (fileDisplay) {
+        submitButton.disabled = false;
+        submitButton.style.backgroundColor = "grey";
         fileDisplay.textContent = "No file selected";
       }
     }
