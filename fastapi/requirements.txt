@@ -3,3 +3,6 @@ fastapi
 dotenv
 pandas
 python-multipart
+openpyxl
+pyarrow
+fastparquet
