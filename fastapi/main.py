@@ -25,14 +25,14 @@ async def upload_file(file = File(...), outputformat = Form(...)):
         if file_extension.lower() == "csv":
             df = pd.read_csv(file_location)
         elif file_extension.lower() == "xlsx":
-            df = pd.read_excel(file_location)
+            df = pd.read_excel(file_location, header=None)
         else:
             df = pd.read_parquet(file_location)
     output_file_location = os.path.join(storage_path, "output." + outputformat)
     if outputformat == "csv":
-        df.to_csv(output_file_location, index=False)
+        df.to_csv(output_file_location, index=False, header=False)
     elif outputformat == "xlsx":
-        df.to_excel(output_file_location, index=False)
+        df.to_excel(output_file_location, index=False, header=False)
     else:
-        df.to_parquet(output_file_location, index=False)
+        df.to_parquet(output_file_location, index=False, header=False)
     return FileResponse(output_file_location, media_type='application/octet-stream', filename="output." + outputformat)
