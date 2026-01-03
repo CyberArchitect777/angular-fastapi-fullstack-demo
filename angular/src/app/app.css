@@ -57,12 +57,16 @@ select {
 
 #format-section {
     width: 300px;
-    margin: 10px auto;
+    margin: 10px auto 30px;
 }
 
 #format-section select {
     width: 85%;
 }
+
+#dataheaderlabel {
+    display: inline;
+}   
 
 button {
     background-color: grey;
