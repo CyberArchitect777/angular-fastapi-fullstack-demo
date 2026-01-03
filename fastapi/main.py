@@ -16,7 +16,6 @@ app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:4200"], allo
 async def upload_file(file = File(...), outputformat = Form(...)):
     file_location = os.path.join(storage_path, "input_" + file.filename)
     file_extension = file.filename.split(".")[-1]
-    print(file.filename)
     # Read file and save to storage
     with open(file_location, "wb+") as file_object:
         file_object.write(file.file.read())
@@ -28,11 +27,12 @@ async def upload_file(file = File(...), outputformat = Form(...)):
             df = pd.read_excel(file_location, header=None)
         else:
             df = pd.read_parquet(file_location)
+    df = df.astype("string")
     output_file_location = os.path.join(storage_path, "output." + outputformat)
     if outputformat == "csv":
         df.to_csv(output_file_location, index=False, header=False)
     elif outputformat == "xlsx":
         df.to_excel(output_file_location, index=False, header=False)
     else:
-        df.to_parquet(output_file_location, index=False, header=False)
+        df.to_parquet(output_file_location, index=False)
     return FileResponse(output_file_location, media_type='application/octet-stream', filename="output." + outputformat)
