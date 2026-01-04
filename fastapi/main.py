@@ -13,7 +13,8 @@ storage_path = os.path.join("storage")
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:4200"], allow_methods=["*"], allow_headers=["*"])
 
 @app.post("/process")
-async def upload_file(file = File(...), outputformat = Form(...)):
+async def upload_file(file = File(...), outputformat = Form(...), headerpresent = Form("false")):
+    print(headerpresent)
     file_location = os.path.join(storage_path, "input_" + file.filename)
     file_extension = file.filename.split(".")[-1]
     # Read file and save to storage
@@ -22,7 +23,7 @@ async def upload_file(file = File(...), outputformat = Form(...)):
     supported_input_extensions = ["csv", "xlsx", "parquet"]
     if file_extension.lower() in supported_input_extensions and outputformat.lower() in supported_input_extensions:
         if file_extension.lower() == "csv":
-            df = pd.read_csv(file_location)
+            df = pd.read_csv(file_location, header=None)
         elif file_extension.lower() == "xlsx":
             df = pd.read_excel(file_location, header=None)
         else:
