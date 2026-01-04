@@ -42,7 +42,7 @@ form {
 }
 
 #inputfile-text {
-    margin-top: 20px;
+    margin: 25px 0 20px;
     display: block;
 }
 
@@ -64,11 +64,11 @@ select {
     width: 85%;
 }
 
-#dataheaderlabel {
+#inputheaderlabel {
     display: inline;
 }   
 
-#headerpresent {
+#inputheaderpresent {
     position: relative;
     top: 2px;
 }

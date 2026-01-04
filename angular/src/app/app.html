@@ -7,6 +7,8 @@
             <input type="file" id="inputfile-real" (change)="onChange($event)">
         </label>
         <span id="inputfile-text">No file selected</span>
+        <label id="inputheaderlabel" for="inputheaderpresent">Assume first line of selected file is a data header?</label>
+        <input type="checkbox" [(ngModel)]="inputheaderpresent" id="inputheaderpresent" name="inputheaderpresent">
         <div id="format-section">
             <label>Please select the output file format:</label>
             <select [(ngModel)]="outputformat" id="outputformat" name="outputformat">
@@ -15,8 +17,6 @@
                 <option value="parquet">Parquet</option>
             </select>
         </div>
-        <label id="dataheaderlabel">Assume first line is data header?</label>
-        <input type="checkbox" [(ngModel)]="headerpresent" id="headerpresent" name="headerpresent">
         <button type="submit" id="submit-button">Transform File</button>
     </form>
 </div>

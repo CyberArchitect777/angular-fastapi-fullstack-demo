@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 export class App {
   inputfile!: File;
   outputformat: string = "csv";
-  headerpresent: boolean = false;
+  inputheaderpresent: boolean = false;
 
   onSubmit(e: Event) {
     e.preventDefault();
@@ -23,7 +23,7 @@ export class App {
       const formData = new FormData();
       formData.append('file', this.inputfile);
       formData.append('outputformat', this.outputformat);
-      formData.append('headerpresent', String(this.headerpresent));
+      formData.append('inputheaderpresent', String(this.inputheaderpresent));
 
       try {
         const uploadTry = await fetch('http://localhost:8000/process', {
