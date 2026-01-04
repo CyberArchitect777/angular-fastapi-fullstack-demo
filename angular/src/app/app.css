@@ -68,6 +68,11 @@ select {
     display: inline;
 }   
 
+#headerpresent {
+    position: relative;
+    top: 2px;
+}
+
 button {
     background-color: grey;
     color: white;
